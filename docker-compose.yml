@@ -1,0 +1,13 @@
+version: "2"
+services:
+  builder:
+    image: sebbia-antora-builder:${SEBBIA_ANTORA_VERSION}
+    ports: 
+      - 3000:3000
+    volumes:
+      - ${OUTPUT_DIR}:/builder/output
+      - ${SRC_DIR}:/builder/src
+    command: [ "tail", "-f", "/dev/null" ]
+
+  plantuml:
+    image: plantuml/plantuml-server:tomcat
