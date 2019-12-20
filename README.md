@@ -11,7 +11,7 @@ Build process is based on Gulp JS.
 
 ## Quick start
 
-Frist you have to install docker and docker-compose
+Frist you have to install docker and docker-compose.
 
 Run this in terminal:
 ```
