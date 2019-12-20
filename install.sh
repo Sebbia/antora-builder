@@ -6,9 +6,12 @@ TMP=/tmp/antora-builder.zip
 INSTALL_DIR=${HOME}/.antora-builder
 
 curl https://codeload.github.com/Sebbia/antora-builder/zip/master > ${TMP}
-unzip -d ${HOME} ${TMP}
-mv ${HOME}/antora-builder-master ${INSTALL_DIR}
-ln -s ${INSTALL_DIR}/sebbia-antora-builder.sh ${HOME}/bin/sebbia-antora-builder
+[ -d /tmp/antora-builder-master ] && rm -rf /tmp/antora-builder-master
+unzip -d /tmp ${TMP}
+
+[ -d ${INSTALL_DIR} ] && rm -rf ${INSTALL_DIR}
+mv /tmp/antora-builder-master ${INSTALL_DIR}
+[ ! -f ${HOME}/bin/sebbia-antora-builder ] && ln -s ${INSTALL_DIR}/sebbia-antora-builder.sh ${HOME}/bin/sebbia-antora-builder
 chmod +x ${HOME}/bin/sebbia-antora-builder
 
 echo

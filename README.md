@@ -9,6 +9,21 @@ This is a basic features of this builder:
 
 Build process is based on Gulp JS.
 
+## Quick start
+
+Frist you have to install docker and docker-compose
+
+Run this in terminal:
+```
+curl https://raw.githubusercontent.com/Sebbia/antora-builder/master/install.sh | bash
+```
+
+Clone and run sample documentation:
+```
+git clone https://gitlab.com/antora/demo/docs-site.git
+sebbia-antora-builder watch -s docs-site -p antora-playbook.yml
+```
+
 ## Usage with Docker
 
 This is dependencies which have to be installed on the host system:
@@ -18,14 +33,14 @@ This is dependencies which have to be installed on the host system:
 
 Build with live reload and serving:
 ```
-./sebbia-antora-builder.sh watch --src where/documentation/root/is --playbook where/playbook/is.yml
+./sebbia-antora-builder.sh watch -s where/documentation/root/is -p where/playbook/is/relative/to/src.yml
 ```
 
 After start the documentation can be viewed in a web browser at this URL: http://localhost:3000
 
 Finally build can be performed by this command:
 ```
-./sebbia-antora-builder.sh build --playbook where/playbook/is.yml --output where/to/place/html
+./sebbia-antora-builder.sh build -p where/playbook/is.yml -o where/to/place/html
 ```
 
 ## Directly builder usage without Docker

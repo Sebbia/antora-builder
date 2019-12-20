@@ -1,7 +1,19 @@
 #!/bin/bash
 
-# set -x
 set -e
+
+realpath() {
+  OURPWD=$PWD
+  cd "$(dirname "$1")"
+  LINK=$(readlink "$(basename "$1")")
+  while [ "$LINK" ]; do
+    cd "$(dirname "$LINK")"
+    LINK=$(readlink "$(basename "$1")")
+  done
+  REALPATH="$PWD/$(basename "$1")"
+  cd "$OURPWD"
+  echo "$REALPATH"
+}
 
 help() {
     echo
@@ -59,7 +71,7 @@ do
     esac
 done
 
-RUNNER_DIR=$(dirname -- $0)
+RUNNER_DIR=$(dirname -- $(realpath $0))
 
 SRC_DIR=${SRC_DIR:-${PWD}}
 
@@ -70,11 +82,6 @@ if [ -z "${PLAYBOOK}" ]; then
     help
     exit 1
 fi
-
-
-realpath() {
-    cd $(dirname "$1") ; echo "$(pwd -P)/$(basename $1)"
-}
 
 TMP_DIR=
 
@@ -108,11 +115,9 @@ function finish {
 }
 trap finish EXIT
 
+cd ${RUNNER_DIR}
 docker-compose -p ${BUILD_NAME} up -d
 docker-compose -p ${BUILD_NAME} exec -T builder bash /builder/define_user.sh $(id -u) $(id -g)
-
-set -x
-
 docker-compose -p ${BUILD_NAME} exec --user builder -T builder \
     /builder/node_modules/.bin/gulp ${COMMAND} --src /builder/src --output /builder/output --playbook /builder/src/${PLAYBOOK} --plantuml-server-url http://plantuml:8080
 
