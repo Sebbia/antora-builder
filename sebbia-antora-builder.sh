@@ -5,7 +5,7 @@ set -e
 
 help() {
     echo
-    echo "Sebbia Antora documentation builder ${SEBBIA_ANTORA_VERSION}"
+    echo "Sebbia Antora documentation builder ${BUILDER_VERSION}"
     echo "======================================="
     echo
     echo "Usage: $0 [-o <output>] [-s <source>] <command>"
@@ -63,7 +63,7 @@ RUNNER_DIR=$(dirname -- $0)
 
 SRC_DIR=${SRC_DIR:-${PWD}}
 
-. ${RUNNER_DIR}/version
+. ${RUNNER_DIR}/config
 
 if [ -z "${PLAYBOOK}" ]; then
     printError "Playbook required"
@@ -93,7 +93,8 @@ echo "Source dir is: ${SRC_DIR}"
 echo "Playbook file is: ${SRC_DIR}/${PLAYBOOK}"
 echo "Output dir is: ${OUTPUT_DIR}"
 
-export SEBBIA_ANTORA_VERSION
+export IMAGE_NAME
+export BUILDER_VERSION
 export COMMAND
 export PLAYBOOK
 export OUTPUT_DIR

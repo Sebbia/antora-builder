@@ -1,7 +1,7 @@
 version: "2"
 services:
   builder:
-    image: sebbia-antora-builder:${SEBBIA_ANTORA_VERSION}
+    image: ${IMAGE_NAME}:${BUILDER_VERSION}
     ports: 
       - 3000:3000
     volumes:

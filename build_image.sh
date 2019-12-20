@@ -1,7 +1,7 @@
 #!/bin/bash
 
-. version
+. config
 
-docker build --rm -f "Dockerfile" -t sebbia-antora-builder:latest .
+docker build --rm -f "Dockerfile" -t ${IMAGE_NAME}:latest .
 
-docker tag sebbia-antora-builder:latest sebbia-antora-builder:${SEBBIA_ANTORA_VERSION}
+docker tag ${IMAGE_NAME}:latest ${IMAGE_NAME}:${BUILDER_VERSION}
