@@ -14,7 +14,7 @@ mv /tmp/antora-builder-master ${INSTALL_DIR}
 
 NEXT_STEP=
 
-if [ -d ${HOME}/ban ]; then
+if [ -d ${HOME}/bin ]; then
     [ ! -f ${HOME}/bin/sebbia-antora-builder ] && ln -s ${INSTALL_DIR}/sebbia-antora-builder.sh ${HOME}/bin/sebbia-antora-builder
     chmod +x ${HOME}/bin/sebbia-antora-builder
 elif [ -f ${HOME}/.profile ]; then
