@@ -58,10 +58,12 @@ function compile(cb) {
     Fs.mkdirSync(options.outputDir, { recursive: true });
 
     const command = `
+        export DOCSEARCH_ENABLED=true && export DOCSEARCH_ENGINE=lunr &&
         "${antoraCliPath}" --stacktrace \
         ${joinedAttrs} \
         --to-dir "${options.outputDir}" \
-        "${options.playbookPath}" 
+        "${options.playbookPath}" \
+        --generator antora-site-generator-lunr
         `
 
     ChildProcess.execSync(command, { cwd: options.workDir })

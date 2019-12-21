@@ -5,7 +5,7 @@ This is a basic features of this builder:
 * Builds documentation with Antora
 * Adds integration with PlantUML
 * Adds live reload ability
-* Adds full text search (TODO)
+* Adds full text search
 * Provides possibility to build documentation in dockerized environment. This simplifies installation.
 
 Build process is based on Gulp JS.
@@ -21,8 +21,8 @@ curl https://raw.githubusercontent.com/Sebbia/antora-builder/master/install.sh |
 
 Clone and run sample documentation:
 ```sh
-git clone https://gitlab.com/antora/demo/docs-site.git
-sebbia-antora-builder watch -s docs-site -p antora-playbook.yml
+git clone https://github.com/Sebbia/antora-builder.git
+sebbia-antora-builder watch -s antora-builder/example-docs -p antora-playbook.yml
 ```
 
 Open the documentation in a browser: http://localhost:3000.
@@ -77,3 +77,11 @@ $ npx gulp watch --src where/documentation/root/is --playbook where/playbook/is.
 ```
 
 The documentation is then accessible at http://localhost:3000.
+
+### Adding search ability to the project
+
+The search ability was implemented with this project https://github.com/Mogztter/antora-lunr.
+
+In short, to enable search field you need to proceed this section:
+
+https://github.com/Mogztter/antora-lunr#enable-the-search-component-in-the-ui
