@@ -78,10 +78,16 @@ $ npx gulp watch --src where/documentation/root/is --playbook where/playbook/is.
 
 The documentation is then accessible at http://localhost:3000.
 
-### Adding search ability to the project
+## Adding search ability to the project
 
 The search ability was implemented with this project https://github.com/Mogztter/antora-lunr.
 
 In short, to enable search field you need to proceed this section:
 
 https://github.com/Mogztter/antora-lunr#enable-the-search-component-in-the-ui
+
+## Docker Hub Image
+
+Images automatically built from this sources is located here:
+
+https://hub.docker.com/r/sebbia/antora-builder
