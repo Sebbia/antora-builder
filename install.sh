@@ -16,7 +16,7 @@ NEXT_STEP=
 
 if [ -d ${HOME}/bin ]; then
     [ ! -f ${HOME}/bin/sebbia-antora-builder ] && ln -s ${INSTALL_DIR}/sebbia-antora-builder.sh ${HOME}/bin/sebbia-antora-builder
-    chmod +x ${HOME}/bin/sebbia-antora-builder
+    chmod +x ${HOME}http://wiki.sebbia.org/pages/viewpage.action?pageId=168624137/bin/sebbia-antora-builder
 elif [ -f ${HOME}/.profile ]; then
 
     BIN_DIR=${INSTALL_DIR}/bin
@@ -25,7 +25,7 @@ elif [ -f ${HOME}/.profile ]; then
     ln -s ${INSTALL_DIR}/sebbia-antora-builder.sh ${BIN_DIR}/sebbia-antora-builder
     chmod +x ${BIN_DIR}/sebbia-antora-builder
     if ! grep -q "${BIN_DIR}" ${HOME}/.profile ; then
-        echo "export PATH=${BIN_DIR}:\${PATH}" >> ${HOME}/.profile
+        echo -e "\nexport PATH=${BIN_DIR}:\${PATH}" >> ${HOME}/.profile
         NEXT_STEP="\nWARNING: Before you start you have to reload your terminal application\n"
     fi
 else
