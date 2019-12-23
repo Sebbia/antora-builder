@@ -22,7 +22,7 @@ curl https://raw.githubusercontent.com/Sebbia/antora-builder/master/install.sh |
 Clone and run sample documentation:
 ```sh
 git clone https://github.com/Sebbia/antora-builder.git
-sebbia-antora-builder watch -s antora-builder/example-docs -p antora-playbook.yml
+sebbia-antora-builder watch -s antora-builder/example-docs -p antora-playbook.yml -o ~/doc-build
 ```
 
 Open the documentation in a browser: http://localhost:3000.
