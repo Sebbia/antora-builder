@@ -16,21 +16,27 @@ NEXT_STEP=
 
 if [ -d ${HOME}/bin ]; then
     [ ! -f ${HOME}/bin/sebbia-antora-builder ] && ln -s ${INSTALL_DIR}/sebbia-antora-builder.sh ${HOME}/bin/sebbia-antora-builder
-    chmod +x ${HOME}http://wiki.sebbia.org/pages/viewpage.action?pageId=168624137/bin/sebbia-antora-builder
-elif [ -f ${HOME}/.profile ]; then
-
+    chmod +x ${HOME}
+else
     BIN_DIR=${INSTALL_DIR}/bin
 
     mkdir -p ${BIN_DIR}
     ln -s ${INSTALL_DIR}/sebbia-antora-builder.sh ${BIN_DIR}/sebbia-antora-builder
     chmod +x ${BIN_DIR}/sebbia-antora-builder
-    if ! grep -q "${BIN_DIR}" ${HOME}/.profile ; then
-        echo -e "\nexport PATH=${BIN_DIR}:\${PATH}" >> ${HOME}/.profile
+
+    updateProfile() {
+        FILE_PATH="${HOME}/$1"
+        [ -f "${FILE_PATH}" ] || return 1
+        grep -q "${BIN_DIR}" ${FILE_PATH} && return 0
+        echo -e "\nexport PATH=${BIN_DIR}:\${PATH}" >> ${FILE_PATH}
+    }
+
+    if updateProfile ".bash_profile" || updateProfile ".bashrc" || updateProfile ".profile"; then
         NEXT_STEP="\nWARNING: Before you start you have to reload your terminal application\n"
+    else
+        echo "Cannot install. Your system is not supported. We are sorry :("
+        exit 1
     fi
-else
-    echo "Cannot install. Your system is not supported. We are sorry :("
-    exit 1
 fi
 
 echo
