@@ -29,7 +29,7 @@ Open the documentation in a browser: http://localhost:3000.
 
 ## Usage with Docker
 
-This is dependencies which have to be installed on the host system:
+These are dependencies which have to be installed on the host system:
 * Docker
 * Docker Compose
 * bash
@@ -46,11 +46,11 @@ Finally build can be performed by this command:
 ./sebbia-antora-builder.sh build -p where/playbook/is.yml -o where/to/place/html
 ```
 
-## Directly builder usage without Docker
+## Direct build without Docker
 
-**WARNING:** This variant is harder for ordinary user. 
+**WARNING:** This way is harder for ordinary user. 
 
-This is dependencies which have to be installed on the host system:
+These are dependencies which have to be installed on the host system:
 * node >= 12
 * make
 * g++
@@ -82,7 +82,7 @@ The documentation is then accessible at http://localhost:3000.
 
 The search ability was implemented with this project https://github.com/Mogztter/antora-lunr.
 
-In short, to enable search field you need to proceed this section:
+In short, to enable search field you need to proceed to this section:
 
 https://github.com/Mogztter/antora-lunr#enable-the-search-component-in-the-ui
 

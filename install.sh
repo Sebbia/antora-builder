@@ -31,7 +31,7 @@ else
         echo -e "\nexport PATH=${BIN_DIR}:\${PATH}" >> ${FILE_PATH}
     }
 
-    if updateProfile ".bash_profile" || updateProfile ".bashrc" || updateProfile ".profile"; then
+    if updateProfile ".bash_profile" || updateProfile ".bashrc" || updateProfile ".profile" || updateProfile ".zshrc"; then
         NEXT_STEP="\nWARNING: Before you start you have to reload your terminal application\n"
     else
         echo "Cannot install. Your system is not supported. We are sorry :("
